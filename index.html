@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Campus Life Web App - Manage events, clubs, room bookings, and helpdesk queries">
+    <meta name="keywords" content="campus, events, clubs, bookings, helpdesk, university">
+    <meta name="author" content="IST4035 Team">
+    
+    <title>Campus Life | Your University Hub</title>
+    
+    <!-- CSS Files - Order matters for cascade -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <!-- Skip to main content link for keyboard accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header with semantic navigation -->
+    <header class="header" role="banner">
+        <div class="header-container">
+            <a href="/" class="logo" aria-label="Campus Life Home">
+                🏫 Campus Life
+            </a>
+            
+            <!-- Mobile menu toggle button -->
+            <button 
+                class="menu-toggle" 
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                aria-controls="main-nav"
+                id="menuToggle"
+                type="button">
+                ☰ Menu
+            </button>
+            
+            <!-- Main Navigation -->
+            <nav class="nav" id="main-nav" aria-label="Main navigation">
+                <ul class="nav-list" role="list">
+                    <li><a href="#events" class="nav-link active" aria-current="page">Events</a></li>
+                    <li><a href="#clubs" class="nav-link">Clubs</a></li>
+                    <li><a href="#bookings" class="nav-link">Room Bookings</a></li>
+                    <li><a href="#helpdesk" class="nav-link">Helpdesk</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Main content area -->
+    <main id="main-content" role="main">
+        <!-- Hero section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <h1 id="hero-title" class="hero-title">Welcome to Campus Life</h1>
+                <p class="hero-description">
+                    Your central hub for events, clubs, room bookings, and support services
+                </p>
+                
+                <!-- HTML5 Canvas API Demo -->
+                <div class="canvas-container">
+                    <canvas 
+                        id="welcomeCanvas" 
+                        width="600" 
+                        height="100"
+                        role="img"
+                        aria-label="Animated welcome banner showing Campus Life text">
+                        Your browser does not support the canvas element. Please update to a modern browser.
+                    </canvas>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features grid section -->
+        <section class="container" aria-labelledby="features-title">
+            <h2 id="features-title" class="sr-only">Main Features</h2>
+            
+            <div class="features-grid">
+                <!-- Events Card -->
+                <article class="feature-card" tabindex="0">
+                    <span class="feature-icon" role="img" aria-label="Calendar icon">📅</span>
+                    <h3 class="feature-title">Campus Events</h3>
+                    <p class="feature-description">
+                        Discover upcoming events, workshops, and activities happening around campus. 
+                        Stay connected with your university community.
+                    </p>
+                </article>
+                
+                <!-- Clubs Card -->
+                <article class="feature-card" tabindex="0">
+                    <span class="feature-icon" role="img" aria-label="People icon">👥</span>
+                    <h3 class="feature-title">Student Clubs</h3>
+                    <p class="feature-description">
+                        Explore student clubs and organizations. Find your passion and connect 
+                        with like-minded students.
+                    </p>
+                </article>
+                
+                <!-- Room Bookings Card -->
+                <article class="feature-card" tabindex="0">
+                    <span class="feature-icon" role="img" aria-label="Door icon">🚪</span>
+                    <h3 class="feature-title">Room Bookings</h3>
+                    <p class="feature-description">
+                        Reserve study rooms, meeting spaces, and facilities. Check availability 
+                        and book instantly.
+                    </p>
+                </article>
+                
+                <!-- Helpdesk Card -->
+                <article class="feature-card" tabindex="0">
+                    <span class="feature-icon" role="img" aria-label="Support icon">💬</span>
+                    <h3 class="feature-title">Helpdesk</h3>
+                    <p class="feature-description">
+                        Get assistance with IT issues, administrative queries, and general support. 
+                        Track your tickets in real-time.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-heading">Campus Life</h3>
+                <p class="footer-text">
+                    Your one-stop platform for all campus activities and services.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-heading">Quick Links</h3>
+                <nav aria-label="Footer navigation">
+                    <ul class="footer-links" role="list">
+                        <li><a href="#about" class="footer-link">About</a></li>
+                        <li><a href="#privacy" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#accessibility" class="footer-link">Accessibility</a></li>
+                        <li><a href="#contact" class="footer-link">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="footer-section">
+                <p class="footer-text footer-copyright">
+                    &copy; 2024 Campus Life App.<br>
+                    IST4035 Advanced Web Design Project.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript Modules -->
+    <script src="js/canvas-demo.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
