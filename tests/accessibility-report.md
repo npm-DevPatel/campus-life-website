@@ -25,9 +25,9 @@ The Campus Life Web App meets and exceeds WCAG 2.1 Level AA requirements, with s
 November 10, 2024
 
 ### Testers
-- Student 1 (Accessibility Lead)
-- Student 2 (QA Testing)
-- Student 3 (Documentation)
+- Dev Patel (Accessibility Lead)
+- Tony Okwaro (QA Testing)
+- Daksh Patel (Documentation)
 
 ---
 
