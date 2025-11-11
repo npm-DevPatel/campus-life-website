@@ -301,6 +301,19 @@ main {
     .hero {
         padding: var(--spacing-3xl) var(--spacing-xl);
     }
+
+        /* Body layout for header + content */
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    #app {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
     
     .hero-title {
         font-size: var(--font-size-4xl);
