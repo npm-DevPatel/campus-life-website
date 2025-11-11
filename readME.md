@@ -37,36 +37,36 @@ Campus Life is a modern, accessible web application designed to manage campus ev
 
 ```
 campus-life-app/
-├── index.html                          [REPLACE - Use new version]
+├── index.html                          
 ├── css/
-│   ├── variables.css                   [KEEP - No changes]
-│   ├── reset.css                       [KEEP - No changes]
-│   ├── layout.css                      [UPDATE - Add new styles at end]
-│   ├── components.css                  [UPDATE - Add new styles at end]
-│   ├── auth.css                        [NEW FILE - Create this]
-│   └── events.css                      [NEW FILE - Create this]
+│   ├── variables.css                  
+│   ├── reset.css                     
+│   ├── layout.css                     
+│   ├── components.css                
+│   ├── auth.css                    
+│   └── events.css                   
 ├── js/
-│   ├── app.js                          [NEW FILE - Create this]
-│   ├── router.js                       [NEW FILE - Create this]
-│   ├── main.js                         [KEEP - Not used but keep for reference]
-│   ├── canvas-demo.js                  [KEEP - Not used but keep for reference]
+│   ├── app.js                       
+│   ├── router.js                      
+│   ├── main.js                         
+│   ├── canvas-demo.js                
 │   ├── config/
-│   │   └── firebase-config.js          [NEW FILE - Create this]
+│   │   └── firebase-config.js       
 │   ├── services/
-│   │   ├── auth-service.js             [NEW FILE - Create this]
-│   │   └── events-service.js           [NEW FILE - Create this]
+│   │   ├── auth-service.js             
+│   │   └── events-service.js          
 │   ├── views/
-│   │   ├── home-view.js                [NEW FILE - Create this]
-│   │   ├── login-view.js               [NEW FILE - Create this]
-│   │   └── events-view.js              [NEW FILE - Create this]
+│   │   ├── home-view.js                
+│   │   ├── login-view.js              
+│   │   └── events-view.js             
 │   └── components/
-│       └── navigation.js               [NEW FILE - Create this]
+│       └── navigation.js               
 ├── assets/
 │   └── images/
-│       └── placeholder.svg             [KEEP]
+│       └── placeholder.svg             
 ├── tests/
-│   └── accessibility-report.md         [KEEP]
-└── README.md                           [KEEP]
+│   └── accessibility-report.md         
+└── README.md                           
 ```
 
 ---
