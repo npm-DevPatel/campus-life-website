@@ -37,22 +37,36 @@ Campus Life is a modern, accessible web application designed to manage campus ev
 
 ```
 campus-life-app/
-├── index.html              # Main HTML document
+├── index.html                          [REPLACE - Use new version]
 ├── css/
-│   ├── variables.css       # Design tokens (colors, spacing, etc.)
-│   ├── reset.css          # CSS reset and base styles
-│   ├── layout.css         # Layout structure (Grid, Flexbox)
-│   └── components.css     # Reusable UI components
+│   ├── variables.css                   [KEEP - No changes]
+│   ├── reset.css                       [KEEP - No changes]
+│   ├── layout.css                      [UPDATE - Add new styles at end]
+│   ├── components.css                  [UPDATE - Add new styles at end]
+│   ├── auth.css                        [NEW FILE - Create this]
+│   └── events.css                      [NEW FILE - Create this]
 ├── js/
-│   ├── main.js            # Main application logic
-│   └── canvas-demo.js     # HTML5 Canvas animation
+│   ├── app.js                          [NEW FILE - Create this]
+│   ├── router.js                       [NEW FILE - Create this]
+│   ├── main.js                         [KEEP - Not used but keep for reference]
+│   ├── canvas-demo.js                  [KEEP - Not used but keep for reference]
+│   ├── config/
+│   │   └── firebase-config.js          [NEW FILE - Create this]
+│   ├── services/
+│   │   ├── auth-service.js             [NEW FILE - Create this]
+│   │   └── events-service.js           [NEW FILE - Create this]
+│   ├── views/
+│   │   ├── home-view.js                [NEW FILE - Create this]
+│   │   ├── login-view.js               [NEW FILE - Create this]
+│   │   └── events-view.js              [NEW FILE - Create this]
+│   └── components/
+│       └── navigation.js               [NEW FILE - Create this]
 ├── assets/
-│   └── images/            # Image assets (placeholder)
+│   └── images/
+│       └── placeholder.svg             [KEEP]
 ├── tests/
-│   └── accessibility-report.md
-├── docs/
-│   └── logbook-upload-1.md
-└── README.md              # This file
+│   └── accessibility-report.md         [KEEP]
+└── README.md                           [KEEP]
 ```
 
 ---
