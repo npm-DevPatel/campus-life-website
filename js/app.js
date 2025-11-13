@@ -6,6 +6,7 @@
 import authService from './services/auth-service.js';
 import eventsService from './services/events-service.js';
 import router from './router.js';
+import clubsService from './services/clubs-service.js';
 
 /**
  * Main application initialization
@@ -19,32 +20,33 @@ class App {
     /**
      * Initialize application
      */
-    async init() {
-        try {
-            console.log('%c Campus Life App ', 
-                        'background: #1e40af; color: white; padding: 8px 16px; border-radius: 4px; font-weight: bold;');
-            console.log('Initializing application...');
+async init() {
+    try {
+        console.log('%c Campus Life App ', 
+                    'background: #1e40af; color: white; padding: 8px 16px; border-radius: 4px; font-weight: bold;');
+        console.log('Initializing application...');
 
-            // Initialize Firebase services
-            await authService.init();
-            eventsService.init();
+        // Initialize Firebase services
+        await authService.init();
+        eventsService.init();
+        clubsService.init(); // Add this line
 
-            // Initialize router
-            router.init();
+        // Initialize router
+        router.init();
 
-            // Set up auth state observer
-            authService.onAuthStateChange((user) => {
-                this.handleAuthStateChange(user);
-            });
+        // Set up auth state observer
+        authService.onAuthStateChange((user) => {
+            this.handleAuthStateChange(user);
+        });
 
-            this.initialized = true;
-            console.log('✓ Application initialized successfully');
+        this.initialized = true;
+        console.log('✓ Application initialized successfully');
 
-        } catch (error) {
-            console.error('Failed to initialize application:', error);
-            this.showInitError();
-        }
+    } catch (error) {
+        console.error('Failed to initialize application:', error);
+        this.showInitError();
     }
+}
 
     /**
      * Handle authentication state changes

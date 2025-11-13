@@ -66,14 +66,14 @@ class HomeView {
                     </article>
                     
                     <!-- Clubs Card -->
-                    <article class="feature-card feature-card-locked" tabindex="0" role="button">
+                    <article class="feature-card ${user ? '' : 'feature-card-locked'}" data-link="${user ? 'clubs' : 'login'}" tabindex="0" role="button">
                         <span class="feature-icon" role="img" aria-label="People icon">👥</span>
                         <h3 class="feature-title">Student Clubs</h3>
                         <p class="feature-description">
                             Explore student clubs and organizations. Find your passion and connect 
                             with like-minded students.
                         </p>
-                        <span class="feature-lock">🚧 Coming soon</span>
+                        ${!user ? '<span class="feature-lock">🔒 Login required</span>' : ''}
                     </article>
                     
                     <!-- Room Bookings Card -->

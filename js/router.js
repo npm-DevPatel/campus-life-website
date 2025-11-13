@@ -8,6 +8,7 @@ import LoginView from './views/login-view.js';
 import EventsView from './views/events-view.js';
 import authService from './services/auth-service.js';
 import { renderNavigation, initNavigation } from './components/navigation.js';
+import ClubsView from './views/clubs-view.js';
 
 /**
  * Simple hash-based router
@@ -65,7 +66,11 @@ class Router {
             'events': {
                 view: EventsView,
                 requiresAuth: true
-            }
+            },
+            'clubs': {
+            view: ClubsView,
+            requiresAuth: true
+        }
         };
     }
 

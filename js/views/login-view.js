@@ -213,46 +213,51 @@ class LoginView {
     /**
      * Handle login submission
      */
-    async handleLogin() {
-        const email = document.getElementById('loginEmail').value.trim();
-        const password = document.getElementById('loginPassword').value;
-        const btn = document.getElementById('loginBtn');
-        const messageEl = document.getElementById('loginMessage');
+/**
+ * Handle login submission
+ */
+async handleLogin() {
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    const rememberMe = document.getElementById('rememberMe').checked; // Add this line
+    const btn = document.getElementById('loginBtn');
+    const messageEl = document.getElementById('loginMessage');
 
-        // Validate inputs
-        if (!this.validateEmail(email)) {
-            this.showMessage(messageEl, 'Please enter a valid email address', 'error');
-            return;
-        }
-
-        if (password.length < 6) {
-            this.showMessage(messageEl, 'Password must be at least 6 characters', 'error');
-            return;
-        }
-
-        // Show loading state
-        this.setLoadingState(btn, true);
-        this.clearMessages();
-
-        try {
-            const result = await authService.login(email, password);
-
-            if (result.success) {
-                    this.showMessage(messageEl, 'Login successful! Redirecting...', 'success');    
-                   // Redirect to home page after short delay
-                    setTimeout(() => {
-                    window.location.hash = '#home'; // Changed from '#events'
-                }, 1000);
-            } else {
-                this.showMessage(messageEl, result.error, 'error');
-            }
-        } catch (error) {
-            this.showMessage(messageEl, 'An unexpected error occurred', 'error');
-            console.error('Login error:', error);
-        } finally {
-            this.setLoadingState(btn, false);
-        }
+    // Validate inputs
+    if (!this.validateEmail(email)) {
+        this.showMessage(messageEl, 'Please enter a valid email address', 'error');
+        return;
     }
+
+    if (password.length < 6) {
+        this.showMessage(messageEl, 'Password must be at least 6 characters', 'error');
+        return;
+    }
+
+    // Show loading state
+    this.setLoadingState(btn, true);
+    this.clearMessages();
+
+    try {
+        const result = await authService.login(email, password, rememberMe); // Update this line
+
+        if (result.success) {
+            this.showMessage(messageEl, 'Login successful! Redirecting...', 'success');
+            
+            // Redirect to home page after short delay
+            setTimeout(() => {
+                window.location.hash = '#home';
+            }, 1000);
+        } else {
+            this.showMessage(messageEl, result.error, 'error');
+        }
+    } catch (error) {
+        this.showMessage(messageEl, 'An unexpected error occurred', 'error');
+        console.error('Login error:', error);
+    } finally {
+        this.setLoadingState(btn, false);
+    }
+}
 
     /**
      * Handle registration submission

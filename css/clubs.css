@@ -1,0 +1,912 @@
+/* ===========================
+   CLUBS PAGE STYLES
+   IST4035 - Campus Life App
+   =========================== */
+
+.clubs-container {
+    min-height: 100vh;
+    background: var(--color-surface);
+}
+
+/* ===========================
+   PAGE HEADER
+   =========================== */
+
+.page-header {
+    background: white;
+    padding: var(--spacing-xl) var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--spacing-xl);
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    max-width: var(--max-width-container);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page-header-content {
+    flex: 1;
+}
+
+.page-title {
+    font-size: var(--font-size-3xl);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.page-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.page-header-actions {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+/* ===========================
+   TABS
+   =========================== */
+
+.clubs-tabs {
+    max-width: var(--max-width-container);
+    margin: 0 auto var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-border-light);
+}
+
+.tab-btn {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: transparent;
+    border: none;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+    color: var(--color-primary);
+    background: var(--color-surface);
+}
+
+.tab-btn.active {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+    border-bottom-color: var(--color-primary);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ===========================
+   FILTERS SECTION
+   =========================== */
+
+.clubs-filters {
+    max-width: var(--max-width-container);
+    margin: 0 auto var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 250px;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-lg);
+    padding-left: var(--spacing-3xl);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+}
+
+.search-icon {
+    position: absolute;
+    left: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--font-size-xl);
+    pointer-events: none;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.filter-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+.filter-select {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    background: white;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+}
+
+/* ===========================
+   CLUBS GRID
+   =========================== */
+
+.clubs-section {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md) var(--spacing-2xl);
+}
+
+.clubs-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+}
+
+/* ===========================
+   CLUB CARD
+   =========================== */
+
+.club-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border: 2px solid transparent;
+}
+
+.club-card:hover,
+.club-card:focus {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.club-card-header {
+    height: 120px;
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+}
+
+.club-category-badge {
+    background: rgba(255, 255, 255, 0.9);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-primary);
+}
+
+.club-status-badge {
+    background: rgba(255, 255, 255, 0.9);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+}
+
+.status-active {
+    color: var(--color-secondary);
+}
+
+.status-full {
+    color: var(--color-accent);
+}
+
+.club-card-body {
+    padding: var(--spacing-xl);
+}
+
+.club-name {
+    font-size: var(--font-size-xl);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+}
+
+.club-description {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-lg);
+}
+
+.club-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+}
+
+.club-meta-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.meta-icon {
+    font-size: var(--font-size-lg);
+}
+
+.club-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border-light);
+}
+
+.club-leader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+}
+
+.leader-icon {
+    font-size: var(--font-size-lg);
+}
+
+.leader-name {
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+}
+
+.club-badges {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+}
+
+.badge-creator {
+    background: var(--color-primary);
+    color: white;
+}
+
+.badge-member {
+    background: var(--color-secondary);
+    color: white;
+}
+
+.badge-pending {
+    background: #fbbf24;
+    color: #78350f;
+}
+
+.badge-warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* ===========================
+   CLUB DETAIL MODAL
+   =========================== */
+
+.modal-large {
+    max-width: 900px;
+}
+
+.club-detail-header {
+    padding: var(--spacing-3xl) var(--spacing-xl);
+    color: white;
+    text-align: center;
+}
+
+.club-detail-category {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-md);
+}
+
+.club-detail-title {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.club-detail-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    font-size: var(--font-size-lg);
+}
+
+.stat-divider {
+    opacity: 0.5;
+}
+
+.club-detail-body {
+    padding: var(--spacing-2xl);
+}
+
+.club-detail-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.club-detail-section h3 {
+    font-size: var(--font-size-xl);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+    font-weight: var(--font-weight-semibold);
+}
+
+.club-detail-section p {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+}
+
+.club-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.detail-card {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-light);
+}
+
+.detail-card-icon {
+    font-size: var(--font-size-3xl);
+}
+
+.detail-card-content strong {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+.detail-card-content p {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin: 0;
+}
+
+.detail-card-content a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.detail-card-content a:hover {
+    text-decoration: underline;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-fast);
+}
+
+.social-link:hover {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+/* Members Grid */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.member-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-light);
+}
+
+.member-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    flex-shrink: 0;
+}
+
+.member-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.member-info strong {
+    display: block;
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.member-role {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.btn-icon-danger {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-surface-hover);
+    color: var(--color-accent);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: var(--font-size-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon-danger:hover {
+    background: var(--color-accent);
+    color: white;
+}
+
+/* Join Requests */
+.requests-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.request-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-border);
+}
+
+.request-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex: 1;
+}
+
+.request-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+}
+
+.request-details {
+    flex: 1;
+}
+
+.request-details strong {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+}
+
+.request-message {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-style: italic;
+    margin: var(--spacing-xs) 0 0;
+}
+
+.request-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* Club Actions */
+.club-actions {
+    margin-top: var(--spacing-2xl);
+    padding-top: var(--spacing-2xl);
+    border-top: 1px solid var(--color-border);
+}
+
+.request-status {
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-md);
+}
+
+.admin-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+}
+
+/* ===========================
+   CLUB FORM
+   =========================== */
+
+.club-form-container {
+    padding: var(--spacing-2xl);
+}
+
+.form-title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-subtitle {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.club-form {
+    max-width: 800px;
+}
+
+.form-section-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    margin: var(--spacing-2xl) 0 var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+}
+
+.form-input {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-family: var(--font-base);
+    transition: all var(--transition-fast);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+}
+
+.form-hint {
+    display: block;
+    margin-top: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-2xl);
+    padding-top: var(--spacing-2xl);
+    border-top: 1px solid var(--color-border);
+}
+
+.btn-lg {
+    padding: var(--spacing-md) var(--spacing-2xl);
+    font-size: var(--font-size-lg);
+}
+
+.btn-sm {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-sm);
+}
+
+/* ===========================
+   JOIN REQUEST FORM
+   =========================== */
+
+.join-request-form {
+    padding: var(--spacing-2xl);
+}
+
+.join-request-form h3 {
+    font-size: var(--font-size-2xl);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-description {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* ===========================
+   MY CLUBS VIEW
+   =========================== */
+
+.my-clubs-content {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md) var(--spacing-2xl);
+}
+
+.my-clubs-sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+}
+
+.my-clubs-section {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.section-title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xl);
+}
+
+.empty-state-small {
+    text-align: center;
+    padding: var(--spacing-3xl);
+}
+
+.empty-state-small p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* ===========================
+   EMPTY & ERROR STATES
+   =========================== */
+
+.empty-state,
+.error-state,
+.loading-container {
+    text-align: center;
+    padding: var(--spacing-3xl);
+}
+
+.empty-icon,
+.error-icon {
+    font-size: 5rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.empty-state h3,
+.error-state h3 {
+    font-size: var(--font-size-2xl);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+}
+
+.empty-state p,
+.error-state p {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+
+@media (min-width: 768px) {
+    .clubs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .clubs-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .clubs-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box {
+        min-width: 100%;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+
+    .filter-select {
+        flex: 1;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .club-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .club-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-actions {
+        flex-direction: column;
+    }
+
+    .request-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .request-actions {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .request-actions .btn {
+        flex: 1;
+    }
+
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
+/* ===========================
+   PRINT STYLES
+   =========================== */
+
+@media print {
+    .clubs-filters,
+    .club-actions,
+    .modal-close,
+    .page-header-actions,
+    .clubs-tabs,
+    .btn-icon-danger {
+        display: none;
+    }
+
+    .club-card {
+        box-shadow: none;
+        border: 1px solid #000;
+        page-break-inside: avoid;
+    }
+}

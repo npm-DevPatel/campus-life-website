@@ -82,23 +82,30 @@ class AuthService {
         }
     }
 
-    /**
-     * Sign in existing user
-     */
-    async login(email, password) {
-        try {
-            const userCredential = await this.auth.signInWithEmailAndPassword(email, password);
-            return {
-                success: true,
-                user: userCredential.user
-            };
-        } catch (error) {
-            return {
-                success: false,
-                error: this.handleAuthError(error)
-            };
+        /**
+         * Sign in existing user
+         */
+        async login(email, password, rememberMe = false) {
+            try {
+                // Set persistence based on "Remember Me" checkbox
+                if (rememberMe) {
+                    await this.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+                } else {
+                    await this.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+                }
+                
+                const userCredential = await this.auth.signInWithEmailAndPassword(email, password);
+                return {
+                    success: true,
+                    user: userCredential.user
+                };
+            } catch (error) {
+                return {
+                    success: false,
+                    error: this.handleAuthError(error)
+                };
+            }
         }
-    }
 
     /**
      * Sign out current user
