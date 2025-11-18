@@ -38,7 +38,8 @@ export function renderNavigation() {
                             <li><a href="#events" class="nav-link ${currentHash === 'events' ? 'active' : ''}">Events</a></li>
                             <li><a href="#clubs" class="nav-link ${currentHash === 'clubs' ? 'active' : ''}" title="Coming soon">Clubs</a></li>
                             <li><a href="#bookings" class="nav-link ${currentHash === 'bookings' ? 'active' : ''}" title="Coming soon">Bookings</a></li>
-                            <li><a href="#helpdesk" class="nav-link ${currentHash === 'helpdesk' ? 'active' : ''}" title="Coming soon">Help</a></li>
+                            
+                            <li><a href="#helpdesk" class="nav-link ${currentHash === 'helpdesk' ? 'active' : ''}">Helpdesk</a></li>
                             
                             <li class="nav-divider"></li>
                             
@@ -49,6 +50,7 @@ export function renderNavigation() {
                             
                             <li><button class="nav-link nav-logout" id="navLogout">Logout</button></li>
                         ` : `
+                            <li><a href="#helpdesk" class="nav-link ${currentHash === 'helpdesk' ? 'active' : ''}">Helpdesk</a></li>
                             <li><a href="#login" class="nav-link nav-login ${currentHash === 'login' ? 'active' : ''}">Login / Register</a></li>
                         `}
                     </ul>
