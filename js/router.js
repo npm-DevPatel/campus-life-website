@@ -9,6 +9,8 @@ import EventsView from './views/events-view.js';
 import authService from './services/auth-service.js';
 import { renderNavigation, initNavigation } from './components/navigation.js';
 import ClubsView from './views/clubs-view.js';
+import HelpView from './views/help-view.js';
+
 
 /**
  * Simple hash-based router
@@ -70,7 +72,13 @@ class Router {
             'clubs': {
             view: ClubsView,
             requiresAuth: true
-        }
+            },
+            'helpdesk': {
+            view: HelpView,
+            requiresAuth: false  // Set to true to restrict access to authenticated users only
+        },
+
+        
         };
     }
 

@@ -21,7 +21,6 @@ class HomeView {
         const user = authService.getCurrentUser();
         
         return `
-            <!-- Hero section -->
             <section class="hero" aria-labelledby="hero-title">
                 <div class="container">
                     <h1 id="hero-title" class="hero-title">Welcome to Campus Life</h1>
@@ -35,7 +34,6 @@ class HomeView {
                         </p>
                     ` : ''}
                     
-                    <!-- HTML5 Canvas API Demo -->
                     <div class="canvas-container">
                         <canvas 
                             id="welcomeCanvas" 
@@ -49,12 +47,10 @@ class HomeView {
                 </div>
             </section>
             
-            <!-- Features grid section -->
             <section class="container" aria-labelledby="features-title">
                 <h2 id="features-title" class="sr-only">Main Features</h2>
                 
                 <div class="features-grid">
-                    <!-- Events Card -->
                     <article class="feature-card ${user ? '' : 'feature-card-locked'}" data-link="${user ? 'events' : 'login'}" tabindex="0" role="button">
                         <span class="feature-icon" role="img" aria-label="Calendar icon">📅</span>
                         <h3 class="feature-title">Campus Events</h3>
@@ -65,7 +61,6 @@ class HomeView {
                         ${!user ? '<span class="feature-lock">🔒 Login required</span>' : ''}
                     </article>
                     
-                    <!-- Clubs Card -->
                     <article class="feature-card ${user ? '' : 'feature-card-locked'}" data-link="${user ? 'clubs' : 'login'}" tabindex="0" role="button">
                         <span class="feature-icon" role="img" aria-label="People icon">👥</span>
                         <h3 class="feature-title">Student Clubs</h3>
@@ -76,7 +71,6 @@ class HomeView {
                         ${!user ? '<span class="feature-lock">🔒 Login required</span>' : ''}
                     </article>
                     
-                    <!-- Room Bookings Card -->
                     <article class="feature-card feature-card-locked" tabindex="0" role="button">
                         <span class="feature-icon" role="img" aria-label="Door icon">🚪</span>
                         <h3 class="feature-title">Room Bookings</h3>
@@ -87,20 +81,17 @@ class HomeView {
                         <span class="feature-lock">🚧 Coming soon</span>
                     </article>
                     
-                    <!-- Helpdesk Card -->
-                    <article class="feature-card feature-card-locked" tabindex="0" role="button">
+                    <article class="feature-card" data-link="helpdesk" tabindex="0" role="button">
                         <span class="feature-icon" role="img" aria-label="Support icon">💬</span>
                         <h3 class="feature-title">Helpdesk</h3>
                         <p class="feature-description">
                             Get assistance with IT issues, administrative queries, and general support. 
-                            Track your tickets in real-time.
+                            Find answers to common questions.
                         </p>
-                        <span class="feature-lock">🚧 Coming soon</span>
                     </article>
                 </div>
             </section>
             
-            <!-- Footer -->
             <footer class="footer" role="contentinfo">
                 <div class="footer-content">
                     <div class="footer-section">
