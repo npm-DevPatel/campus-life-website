@@ -131,7 +131,7 @@ export default class BookingsView {
                 name: "Group Study Room A",
                 capacity: 6,
                 type: "Study",
-                icon: "fa-book-open",
+                icon: "📚", // EMOJI ICON
                 gradient: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)", 
                 status: "Available",
                 description: "Quiet space with whiteboard, perfect for group projects."
@@ -141,7 +141,7 @@ export default class BookingsView {
                 name: "Conference Hall B",
                 capacity: 50,
                 type: "Event",
-                icon: "fa-users",
+                icon: "🎤", // EMOJI ICON
                 gradient: "linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)",
                 status: "Available",
                 description: "Large hall equipped with projector and sound system."
@@ -151,7 +151,7 @@ export default class BookingsView {
                 name: "Media Lab 4",
                 capacity: 12,
                 type: "Lab",
-                icon: "fa-desktop",
+                icon: "💻", // EMOJI ICON
                 gradient: "linear-gradient(135deg, #f97316 0%, #ec4899 100%)",
                 status: "Limited",
                 description: "High-performance computers with Adobe Creative Cloud."
@@ -161,7 +161,7 @@ export default class BookingsView {
                 name: "Study Pod 2",
                 capacity: 2,
                 type: "Study",
-                icon: "fa-laptop",
+                icon: "🎧", // EMOJI ICON
                 gradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
                 status: "Available",
                 description: "Private pod for focused individual study."
@@ -193,7 +193,7 @@ export default class BookingsView {
         grid.innerHTML = this.filteredRooms.map(room => `
             <article class="room-card" tabindex="0">
                 <div class="room-image" style="background: ${room.gradient}">
-                    <i class="fas ${room.icon}"></i> 
+                    <span class="room-icon">${room.icon}</span> 
                 </div>
                 <div class="room-details">
                     <span class="room-badge">${room.type}</span>
@@ -201,7 +201,7 @@ export default class BookingsView {
                     <p class="room-desc">${room.description}</p>
                     
                     <div class="room-meta">
-                        <span class="meta-item"><i class="fas fa-user"></i> ${room.capacity} Capacity</span>
+                        <span class="meta-item">👤 ${room.capacity} Capacity</span>
                         <span class="meta-item status-${room.status.toLowerCase()}">${room.status}</span>
                     </div>
 
@@ -233,7 +233,7 @@ export default class BookingsView {
             <div class="booking-form-container">
                 <div class="modal-header-custom" style="background: ${room.gradient}; padding: 1.5rem; border-radius: 8px 8px 0 0; color: white; margin: -1.5rem -1.5rem 1.5rem -1.5rem;">
                     <h2>Book ${room.name}</h2>
-                    <p><i class="fas ${room.icon}"></i> ${room.type} Room • Capacity: ${room.capacity}</p>
+                    <p><span style="font-size: 1.2em; margin-right: 5px;">${room.icon}</span> ${room.type} Room • Capacity: ${room.capacity}</p>
                 </div>
                 
                 <form id="bookingForm">
@@ -276,10 +276,8 @@ export default class BookingsView {
     }
 
     handleBookingSubmit(roomName) {
-        // Here you would send data to the server
         this.closeModal();
         
-        // Show a simplified toast notification
         const toast = document.createElement('div');
         toast.className = 'toast toast-success show';
         toast.textContent = `Success! You have booked ${roomName}.`;
@@ -298,7 +296,6 @@ export default class BookingsView {
      * Attach Event Listeners
      */
     attachEventListeners() {
-        // Search
         const searchInput = document.getElementById('roomSearch');
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
@@ -310,10 +307,8 @@ export default class BookingsView {
             });
         }
 
-        // Filters
         document.getElementById('dateFilter')?.addEventListener('change', (e) => {
             this.filters.date = e.target.value;
-            // In a real app, this would trigger a fetch to check availability
         });
 
         document.getElementById('typeFilter')?.addEventListener('change', (e) => {
@@ -321,7 +316,6 @@ export default class BookingsView {
             this.applyFilters();
         });
 
-        // Clear Filters
         document.getElementById('clearFiltersBtn')?.addEventListener('click', () => {
             document.getElementById('roomSearch').value = '';
             document.getElementById('typeFilter').value = 'all';
@@ -330,11 +324,9 @@ export default class BookingsView {
             this.applyFilters();
         });
 
-        // Modal Close
         document.getElementById('modalClose')?.addEventListener('click', () => this.closeModal());
         document.getElementById('modalOverlay')?.addEventListener('click', () => this.closeModal());
 
-        // Global instance for onclick handlers
         window.bookingsViewInstance = this;
     }
 
