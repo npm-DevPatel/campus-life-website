@@ -72,7 +72,7 @@ class HomeView {
                     </article>
                     
                     <article class="feature-card ${user ? '' : 'feature-card-locked'}" data-link="${user ? 'bookings' : 'login'}" tabindex="0" role="button">
-                        <span class="feature-icon" role="img" aria-label="Door icon">🚪</span>
+                        <span class="feature-icon" role="img" aria-label="Building icon">🏢</span>
                         <h3 class="feature-title">Room Bookings</h3>
                         <p class="feature-description">
                             Reserve study rooms, meeting spaces, and facilities. Check availability and book instantly.
