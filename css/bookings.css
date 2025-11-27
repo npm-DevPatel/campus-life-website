@@ -1,0 +1,116 @@
+/* css/bookings.css */
+
+.bookings-header {
+    background-color: var(--bg-white);
+    padding: 2rem 5%;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.bookings-filter-container {
+    display: flex;
+    gap: 1rem;
+    padding: 0 5%;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    min-width: 200px;
+}
+
+.bookings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 5% 4rem 5%;
+}
+
+.room-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: transform 0.2s;
+    border: 1px solid #eee;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+}
+
+.room-image {
+    height: 180px;
+    width: 100%;
+    /* Flexbox is used to center the icon perfectly */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.room-image i {
+    font-size: 4rem;      /* Large icon size */
+    color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* Subtle shadow for depth */
+    transition: transform 0.3s ease;
+}
+
+.room-card:hover .room-image i {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.room-image i {
+    font-size: 3rem;
+    color: #4f46e5;
+}
+
+.room-details {
+    padding: 1.5rem;
+}
+
+.room-badge {
+    background-color: #f3f4f6;
+    color: #374151;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.room-meta {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.btn-book {
+    background-color: #4f46e5; /* Primary Blue */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-book:hover {
+    background-color: #4338ca;
+}
