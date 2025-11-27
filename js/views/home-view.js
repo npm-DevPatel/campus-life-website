@@ -71,14 +71,13 @@ class HomeView {
                         ${!user ? '<span class="feature-lock">🔒 Login required</span>' : ''}
                     </article>
                     
-                    <article class="feature-card feature-card-locked" tabindex="0" role="button">
+                    <article class="feature-card ${user ? '' : 'feature-card-locked'}" data-link="${user ? 'bookings' : 'login'}" tabindex="0" role="button">
                         <span class="feature-icon" role="img" aria-label="Door icon">🚪</span>
                         <h3 class="feature-title">Room Bookings</h3>
                         <p class="feature-description">
-                            Reserve study rooms, meeting spaces, and facilities. Check availability 
-                            and book instantly.
+                            Reserve study rooms, meeting spaces, and facilities. Check availability and book instantly.
                         </p>
-                        <span class="feature-lock">🚧 Coming soon</span>
+                        ${!user ? '<span class="feature-lock">🔒 Login required</span>' : ''}
                     </article>
                     
                     <article class="feature-card" data-link="helpdesk" tabindex="0" role="button">
