@@ -1,4 +1,3 @@
-// js/views/bookings.js
 import authService from '../services/auth-service.js';
 
 /**
@@ -29,7 +28,7 @@ export default class BookingsView {
                 <header class="page-header">
                     <div class="page-header-content">
                         <h1 class="page-title">Room Bookings</h1>
-                        <p class="page-subtitle">Reserve study rooms, meeting spaces, and facilities instantly</p>
+                        <p class="page-subtitle">Reserve study rooms, labs, and facilities across USIU campus</p>
                     </div>
                     ${user ? `
                         <div class="user-info">
@@ -44,7 +43,7 @@ export default class BookingsView {
                             type="search" 
                             id="roomSearch" 
                             class="search-input"
-                            placeholder="Search rooms..."
+                            placeholder="Search rooms (e.g., Library, Lab)..."
                             aria-label="Search rooms">
                         <span class="search-icon">🔍</span>
                     </div>
@@ -108,10 +107,8 @@ export default class BookingsView {
         const today = new Date().toISOString().split('T')[0];
         this.filters.date = today;
         
-        // Simulating async data loading
         await this.loadRooms();
         
-        // Setup initial UI states
         const dateInput = document.getElementById('dateFilter');
         if (dateInput) dateInput.value = today;
 
@@ -119,7 +116,7 @@ export default class BookingsView {
     }
 
     /**
-     * Load rooms (Mock Data service)
+     * Load rooms (USIU Mock Data)
      */
     async loadRooms() {
         // Simulate network delay
@@ -128,41 +125,51 @@ export default class BookingsView {
         this.rooms = [
             {
                 id: 1,
-                name: "Group Study Room A",
-                capacity: 6,
+                name: "Lillian Beam - Lab 2",
+                capacity: 30,
                 type: "Study",
-                icon: "📚", // EMOJI ICON
+                icon: "📚", 
                 gradient: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)", 
                 status: "Available",
-                description: "Quiet space with whiteboard, perfect for group projects."
+                description: "Quiet study lab on the ground floor of the Lillian K. Beam. Whiteboard included."
             },
             {
                 id: 2,
-                name: "Conference Hall B",
-                capacity: 50,
+                name: "USIU Auditorium",
+                capacity: 300,
                 type: "Event",
-                icon: "🎤", // EMOJI ICON
+                icon: "🎤", 
                 gradient: "linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)",
                 status: "Available",
-                description: "Large hall equipped with projector and sound system."
+                description: "Main university auditorium for large student assemblies, guest lectures, and performances."
             },
             {
                 id: 3,
-                name: "Media Lab 4",
-                capacity: 12,
+                name: "SST Computer Lab 2",
+                capacity: 30,
                 type: "Lab",
-                icon: "💻", // EMOJI ICON
+                icon: "💻", 
                 gradient: "linear-gradient(135deg, #f97316 0%, #ec4899 100%)",
                 status: "Limited",
-                description: "High-performance computers with Adobe Creative Cloud."
+                description: "High-performance lab in the School of Science & Technology. Equipped with programming software."
             },
             {
                 id: 4,
-                name: "Study Pod 2",
+                name: "Student Center Meeting Room",
+                capacity: 25,
+                type: "Study",
+                icon: "🤝", 
+                gradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                status: "Available",
+                description: "Located in the Freida Brown Student Center. Ideal for club meetings and group discussions."
+            },
+            {
+                id: 5,
+                name: "Study Pod 1 - SHSS",
                 capacity: 2,
                 type: "Study",
-                icon: "🎧", // EMOJI ICON
-                gradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                icon: "🎧",
+                gradient: "linear-gradient(135deg, #333abcff 0%, #0f036aff 100%)",
                 status: "Available",
                 description: "Private pod for focused individual study."
             }
@@ -268,7 +275,6 @@ export default class BookingsView {
 
         modal.classList.remove('hidden');
 
-        // Handle Form Submit
         document.getElementById('bookingForm').addEventListener('submit', (e) => {
             e.preventDefault();
             this.handleBookingSubmit(room.name);
