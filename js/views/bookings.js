@@ -170,8 +170,18 @@ export default class BookingsView {
                 type: "Study",
                 icon: "🎧",
                 gradient: "linear-gradient(135deg, #333abcff 0%, #0f036aff 100%)",
-                status: "Available",
+                status: "Limited",
                 description: "Private pod for focused individual study."
+            },
+            {
+                id: 6,
+                name: "Lillian Beam - Software Lab",
+                capacity: 15,
+                type: "Lab",
+                icon: "💻", 
+                gradient: "linear-gradient(135deg, #a89136ff 0%, #a0740cff 100%)", 
+                status: "Limited",
+                description: "Quiet software lab on the first floor of the Lillian K. Beam. Whiteboard included."
             }
         ];
 
@@ -346,3 +356,4 @@ export default class BookingsView {
         this.renderRooms();
     }
 }
+
