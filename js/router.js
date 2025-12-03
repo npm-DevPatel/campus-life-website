@@ -87,35 +87,49 @@ class Router {
         };
     }
 
-    /**
-     * Handle route change
-     */
-    async handleRoute() {
-        const hash = window.location.hash.slice(1) || 'home'; // Changed from 'login'
-        const route = this.routes[hash];
+/**
+ * Handle route change
+ */
+async handleRoute() {
+    const hash = window.location.hash.slice(1) || 'home';
+    const route = this.routes[hash];
 
-        if (!route) {
-            console.warn(`Route not found: ${hash}`);
-            window.location.hash = '#home'; // Changed from '#login'
-            return;
-        }
-
-        const isAuthenticated = authService.isAuthenticated();
-        
-        if (route.requiresAuth && !isAuthenticated) {
-            console.log('Route requires authentication, redirecting to login');
-            window.location.hash = '#login';
-            return;
-        }
-
-        // If logged in and trying to access login, redirect to home instead
-        if (hash === 'login' && isAuthenticated) {
-            window.location.hash = '#home'; // Changed from '#events'
-            return;
-        }
-
-        await this.loadView(route.view);
+    if (!route) {
+        console.warn(`Route not found: ${hash}`);
+        window.location.hash = '#home';
+        return;
     }
+
+    // CRITICAL FIX: Wait for auth to be ready before checking authentication
+    // This prevents false "not authenticated" checks during page load
+    if (!authService.authReady) {
+        console.log('Waiting for auth to initialize...');
+        await new Promise(resolve => {
+            const checkAuth = setInterval(() => {
+                if (authService.authReady) {
+                    clearInterval(checkAuth);
+                    resolve();
+                }
+            }, 50);
+        });
+    }
+
+    const isAuthenticated = authService.isAuthenticated();
+    
+    if (route.requiresAuth && !isAuthenticated) {
+        console.log('Route requires authentication, redirecting to login');
+        window.location.hash = '#login';
+        return;
+    }
+
+    // If logged in and trying to access login, redirect to home instead
+    if (hash === 'login' && isAuthenticated) {
+        window.location.hash = '#home';
+        return;
+    }
+
+    await this.loadView(route.view);
+}
 
     /**
      * Load and render view

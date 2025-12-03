@@ -6,6 +6,7 @@
 import authService from './services/auth-service.js';
 import eventsService from './services/events-service.js';
 import router from './router.js';
+import bookingsService from './services/bookings-service.js'; // Add this line
 import clubsService from './services/clubs-service.js';
 
 /**
@@ -29,7 +30,8 @@ async init() {
         // Initialize Firebase services
         await authService.init();
         eventsService.init();
-        clubsService.init(); // Add this line
+        clubsService.init();
+        bookingsService.init(); // Add this line
 
         // Initialize router
         router.init();

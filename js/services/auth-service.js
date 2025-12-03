@@ -15,6 +15,7 @@ class AuthService {
         this.auth = null;
         this.currentUser = null;
         this.authStateListeners = [];
+        this.authReady = false;
     }
 
     /**
@@ -29,21 +30,33 @@ class AuthService {
             
             this.auth = firebase.auth();
             
-            // Set up auth state observer
-            this.auth.onAuthStateChanged((user) => {
-                this.currentUser = user;
-                this.notifyAuthStateChange(user);
-                
-                if (user) {
-                    console.log('User authenticated:', user.email);
-                    this.saveUserToLocalStorage(user);
-                } else {
-                    console.log('User signed out');
-                    this.clearUserFromLocalStorage();
-                }
-            });
+            // CRITICAL FIX: Set default persistence to LOCAL before any auth state changes
+            // This ensures the session persists even on page refresh
+            await this.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
             
-            console.log('Firebase Auth initialized');
+            // Wait for auth state to be ready
+            return new Promise((resolve) => {
+                // Set up auth state observer
+                this.auth.onAuthStateChanged((user) => {
+                    this.currentUser = user;
+                    this.notifyAuthStateChange(user);
+                    
+                    if (user) {
+                        console.log('User authenticated:', user.email);
+                        this.saveUserToLocalStorage(user);
+                    } else {
+                        console.log('User signed out');
+                        this.clearUserFromLocalStorage();
+                    }
+                    
+                    // Mark auth as ready on first state change
+                    if (!this.authReady) {
+                        this.authReady = true;
+                        console.log('Firebase Auth initialized and ready');
+                        resolve();
+                    }
+                });
+            });
         } catch (error) {
             console.error('Firebase initialization error:', error);
             throw error;
@@ -82,30 +95,35 @@ class AuthService {
         }
     }
 
-        /**
-         * Sign in existing user
-         */
-        async login(email, password, rememberMe = false) {
-            try {
-                // Set persistence based on "Remember Me" checkbox
-                if (rememberMe) {
-                    await this.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-                } else {
-                    await this.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
-                }
-                
-                const userCredential = await this.auth.signInWithEmailAndPassword(email, password);
-                return {
-                    success: true,
-                    user: userCredential.user
-                };
-            } catch (error) {
-                return {
-                    success: false,
-                    error: this.handleAuthError(error)
-                };
-            }
+    /**
+     * Sign in existing user
+     */
+    async login(email, password, rememberMe = false) {
+        try {
+            // Set persistence based on "Remember Me" checkbox
+            // LOCAL = persistent across browser sessions
+            // SESSION = only for current browser session (cleared on close)
+            const persistenceType = rememberMe 
+                ? firebase.auth.Auth.Persistence.LOCAL 
+                : firebase.auth.Auth.Persistence.SESSION;
+            
+            await this.auth.setPersistence(persistenceType);
+            
+            const userCredential = await this.auth.signInWithEmailAndPassword(email, password);
+            
+            console.log('Login successful with persistence:', rememberMe ? 'LOCAL' : 'SESSION');
+            
+            return {
+                success: true,
+                user: userCredential.user
+            };
+        } catch (error) {
+            return {
+                success: false,
+                error: this.handleAuthError(error)
+            };
         }
+    }
 
     /**
      * Sign out current user
