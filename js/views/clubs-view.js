@@ -1186,6 +1186,7 @@ class ClubsView {
      * Apply filters
      */
     applyFilters() {
+        console.log('Search triggered for:', this.searchTerm);
         this.filteredClubs = this.clubs.filter(club => {
             const categoryMatch = this.selectedCategory === 'all' || club.category === this.selectedCategory;
             const statusMatch = this.selectedStatus === 'all' || club.status === this.selectedStatus;
