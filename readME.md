@@ -19,8 +19,8 @@
 
 Campus Life is a production-ready, full-stack web application designed to enhance student experience at USIU-Africa. The platform provides comprehensive tools for managing campus events, student clubs, room bookings, and helpdesk services. Built with modern web technologies and Firebase backend, this application demonstrates industry-standard practices in accessibility, responsive design, security, and performance optimization.
 
-**Live Demo**: [Add your deployed URL here]  
-**GitHub Repository**: [Add your repo URL here]
+**Live Demo**: [https://npm-devpatel.github.io/campus-life-website/#home] 
+**GitHub Repository**: [https://github.com/npm-DevPatel/campus-life-website]
 
 ---
 
@@ -939,15 +939,15 @@ async updateRoomStatuses() {
 ## 📧 Contact & Support
 
 ### Team Contact
-- **Dev Patel** (670820): [dev.patel@usiu.ac.ke]
+- **Dev Patel** (670820): devkpatel@usiu.ac.ke/devpatel.7150@gmail.com
 - **Tony Okwaro** (658076): [tony.okwaro@usiu.ac.ke]
 - **Daksh Patel** (669069): [daksh.patel@usiu.ac.ke]
 
 ### University Support
 - **Course**: IST4035 Advanced Web Design
 - **Institution**: USIU-Africa
-- **Semester**: [Add semester]
-- **Year**: 2024
+- **Semester**: FS25
+- **Year**: 2025
 
 ---
 
