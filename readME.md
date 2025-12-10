@@ -970,8 +970,25 @@ This project is developed for educational purposes as part of the IST4035 Advanc
 ## 📚 References
 
 ### Web Standards & Guidelines
-- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [HTML5 Specification](https://html.spec.whatwg.org/)
-- [CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
-- [Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-
+- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/) - Web Accessibility Initiative standards.
+- [MDN Web Docs](https://developer.mozilla.org/) - Comprehensive resource for HTML, CSS, and JavaScript.
+- [HTML5 Specification](https://html.spec.whatwg.org/) - The living standard for HTML.
+- [CSS Grid Layout Guide](https://css-tricks.com/snippets/css/complete-guide-grid/) - CSS-Tricks comprehensive guide to Grid.
+- [Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - CSS-Tricks comprehensive guide to Flexbox.
+
+### Backend & Database (Firebase)
+- [Firebase Documentation](https://firebase.google.com/docs) - Official documentation for the Firebase platform.
+- [Firebase Authentication](https://firebase.google.com/docs/auth) - Guides for implementing secure user sign-in.
+- [Cloud Firestore Data Model](https://firebase.google.com/docs/firestore/data-model) - Understanding NoSQL document-oriented databases.
+- [Firestore Security Rules](https://firebase.google.com/docs/firestore/security/get-started) - Syntax and logic for securing database access.
+
+### Browser APIs
+- [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) - MDN guide for 2D graphics and animation.
+- [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) - Guide for localStorage and sessionStorage.
+- [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API) - Managing session history for SPA routing.
+
+### Tools & Testing
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/) - Official documentation for debugging and profiling.
+- [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) - Automated auditing for performance, accessibility, and SEO.
+- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) - Tool used for verifying WCAG color contrast compliance.
+- [Regex101](https://regex101.com/) - Tool used for testing email and password validation patterns.
