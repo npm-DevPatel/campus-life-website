@@ -141,6 +141,24 @@ class AuthService {
     }
 
     /**
+     * Send password reset email
+     */
+    async sendPasswordResetEmail(email) {
+        try {
+            await this.auth.sendPasswordResetEmail(email);
+            return {
+                success: true,
+                message: 'Password reset email sent. Please check your inbox.'
+            };
+        } catch (error) {
+            return {
+                success: false,
+                error: this.handleAuthError(error)
+            };
+        }
+    }
+
+    /**
      * Create user profile in Firestore
      */
     async createUserProfile(uid, userData) {

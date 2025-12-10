@@ -78,6 +78,9 @@ class LoginView {
                                 <input type="checkbox" id="rememberMe">
                                 <span>Remember me</span>
                             </label>
+                            <a href="#" class="forgot-password-link" id="forgotPasswordLink">
+                                Forgot Password?
+                            </a>
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-block" id="loginBtn">
@@ -153,6 +156,47 @@ class LoginView {
                         <div class="auth-message hidden" id="registerMessage"></div>
                     </form>
                 </div>
+
+                <!-- Forgot Password Modal -->
+                <div id="forgotPasswordModal" class="auth-modal hidden">
+                    <div class="auth-modal-overlay" id="forgotPasswordOverlay"></div>
+                    <div class="auth-modal-content">
+                        <button class="auth-modal-close" id="forgotPasswordClose">✕</button>
+                        <div class="auth-modal-body">
+                            <h2 class="auth-modal-title">Reset Password</h2>
+                            <p class="auth-modal-description">
+                                Enter your email address and we'll send you a link to reset your password.
+                            </p>
+                            
+                            <form id="forgotPasswordForm">
+                                <div class="form-group">
+                                    <label for="resetEmail" class="form-label">
+                                        Email Address
+                                    </label>
+                                    <input 
+                                        type="email" 
+                                        id="resetEmail" 
+                                        class="form-input"
+                                        placeholder="you@university.edu"
+                                        required
+                                        autocomplete="email">
+                                </div>
+
+                                <div class="auth-message hidden" id="resetMessage"></div>
+
+                                <div class="auth-modal-actions">
+                                    <button type="button" class="btn btn-secondary" id="resetCancelBtn">
+                                        Cancel
+                                    </button>
+                                    <button type="submit" class="btn btn-primary" id="resetSubmitBtn">
+                                        <span class="btn-text">Send Reset Link</span>
+                                        <span class="btn-loader hidden"></span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         `;
     }
@@ -180,6 +224,38 @@ class LoginView {
         document.getElementById('registerForm')?.addEventListener('submit', (e) => {
             e.preventDefault();
             this.handleRegister();
+        });
+
+        // Forgot password link
+        document.getElementById('forgotPasswordLink')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.openForgotPasswordModal();
+        });
+
+        // Forgot password form
+        document.getElementById('forgotPasswordForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handlePasswordReset();
+        });
+
+        // Modal close buttons
+        document.getElementById('forgotPasswordClose')?.addEventListener('click', () => {
+            this.closeForgotPasswordModal();
+        });
+
+        document.getElementById('forgotPasswordOverlay')?.addEventListener('click', () => {
+            this.closeForgotPasswordModal();
+        });
+
+        document.getElementById('resetCancelBtn')?.addEventListener('click', () => {
+            this.closeForgotPasswordModal();
+        });
+
+        // ESC key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeForgotPasswordModal();
+            }
         });
     }
 
@@ -213,51 +289,48 @@ class LoginView {
     /**
      * Handle login submission
      */
-/**
- * Handle login submission
- */
-async handleLogin() {
-    const email = document.getElementById('loginEmail').value.trim();
-    const password = document.getElementById('loginPassword').value;
-    const rememberMe = document.getElementById('rememberMe').checked; // Add this line
-    const btn = document.getElementById('loginBtn');
-    const messageEl = document.getElementById('loginMessage');
+    async handleLogin() {
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value;
+        const rememberMe = document.getElementById('rememberMe').checked;
+        const btn = document.getElementById('loginBtn');
+        const messageEl = document.getElementById('loginMessage');
 
-    // Validate inputs
-    if (!this.validateEmail(email)) {
-        this.showMessage(messageEl, 'Please enter a valid email address', 'error');
-        return;
-    }
-
-    if (password.length < 6) {
-        this.showMessage(messageEl, 'Password must be at least 6 characters', 'error');
-        return;
-    }
-
-    // Show loading state
-    this.setLoadingState(btn, true);
-    this.clearMessages();
-
-    try {
-        const result = await authService.login(email, password, rememberMe); // Update this line
-
-        if (result.success) {
-            this.showMessage(messageEl, 'Login successful! Redirecting...', 'success');
-            
-            // Redirect to home page after short delay
-            setTimeout(() => {
-                window.location.hash = '#home';
-            }, 1000);
-        } else {
-            this.showMessage(messageEl, result.error, 'error');
+        // Validate inputs
+        if (!this.validateEmail(email)) {
+            this.showMessage(messageEl, 'Please enter a valid email address', 'error');
+            return;
         }
-    } catch (error) {
-        this.showMessage(messageEl, 'An unexpected error occurred', 'error');
-        console.error('Login error:', error);
-    } finally {
-        this.setLoadingState(btn, false);
+
+        if (password.length < 6) {
+            this.showMessage(messageEl, 'Password must be at least 6 characters', 'error');
+            return;
+        }
+
+        // Show loading state
+        this.setLoadingState(btn, true);
+        this.clearMessages();
+
+        try {
+            const result = await authService.login(email, password, rememberMe);
+
+            if (result.success) {
+                this.showMessage(messageEl, 'Login successful! Redirecting...', 'success');
+                
+                // Redirect to home page after short delay
+                setTimeout(() => {
+                    window.location.hash = '#home';
+                }, 1000);
+            } else {
+                this.showMessage(messageEl, result.error, 'error');
+            }
+        } catch (error) {
+            this.showMessage(messageEl, 'An unexpected error occurred', 'error');
+            console.error('Login error:', error);
+        } finally {
+            this.setLoadingState(btn, false);
+        }
     }
-}
 
     /**
      * Handle registration submission
@@ -299,18 +372,93 @@ async handleLogin() {
             const result = await authService.register(email, password, name);
 
             if (result.success) {
-                    this.showMessage(messageEl, 'Account created successfully! Redirecting...', 'success');    
-                    // Redirect to home page after short delay
-                    setTimeout(() => {
-                    window.location.hash = '#home'; // Changed from '#events'
+                this.showMessage(messageEl, 'Account created successfully! Redirecting...', 'success');    
+                
+                // Redirect to home page after short delay
+                setTimeout(() => {
+                    window.location.hash = '#home';
                 }, 1000);
-            }
-            else {
+            } else {
                 this.showMessage(messageEl, result.error, 'error');
             }
         } catch (error) {
             this.showMessage(messageEl, 'An unexpected error occurred', 'error');
             console.error('Registration error:', error);
+        } finally {
+            this.setLoadingState(btn, false);
+        }
+    }
+
+    /**
+     * Open forgot password modal
+     */
+    openForgotPasswordModal() {
+        const modal = document.getElementById('forgotPasswordModal');
+        const resetEmail = document.getElementById('resetEmail');
+        const loginEmail = document.getElementById('loginEmail').value.trim();
+
+        // Pre-fill with login email if available
+        if (loginEmail && this.validateEmail(loginEmail)) {
+            resetEmail.value = loginEmail;
+        }
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
+        // Focus on email input
+        setTimeout(() => resetEmail.focus(), 100);
+    }
+
+    /**
+     * Close forgot password modal
+     */
+    closeForgotPasswordModal() {
+        const modal = document.getElementById('forgotPasswordModal');
+        const form = document.getElementById('forgotPasswordForm');
+        const messageEl = document.getElementById('resetMessage');
+
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+        
+        // Reset form
+        form.reset();
+        messageEl.classList.add('hidden');
+    }
+
+    /**
+     * Handle password reset
+     */
+    async handlePasswordReset() {
+        const email = document.getElementById('resetEmail').value.trim();
+        const btn = document.getElementById('resetSubmitBtn');
+        const messageEl = document.getElementById('resetMessage');
+
+        // Validate email
+        if (!this.validateEmail(email)) {
+            this.showMessage(messageEl, 'Please enter a valid email address', 'error');
+            return;
+        }
+
+        // Show loading state
+        this.setLoadingState(btn, true);
+        messageEl.classList.add('hidden');
+
+        try {
+            const result = await authService.sendPasswordResetEmail(email);
+
+            if (result.success) {
+                this.showMessage(messageEl, result.message, 'success');
+                
+                // Close modal after 3 seconds
+                setTimeout(() => {
+                    this.closeForgotPasswordModal();
+                }, 3000);
+            } else {
+                this.showMessage(messageEl, result.error, 'error');
+            }
+        } catch (error) {
+            this.showMessage(messageEl, 'Failed to send reset email. Please try again.', 'error');
+            console.error('Password reset error:', error);
         } finally {
             this.setLoadingState(btn, false);
         }

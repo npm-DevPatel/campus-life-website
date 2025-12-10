@@ -224,11 +224,19 @@
     line-height: var(--line-height-relaxed);
     margin-bottom: var(--spacing-lg);
     font-size: var(--font-size-base);
+
     display: -webkit-box;
-    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+
+    /* Add this for compatibility */
+    line-clamp: 2;
+
+    /* Existing vendor-prefixed version */
+    -webkit-line-clamp: 2;
+
     overflow: hidden;
 }
+
 
 .room-meta {
     margin-top: auto;
