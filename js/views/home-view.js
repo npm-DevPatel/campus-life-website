@@ -114,8 +114,8 @@ class HomeView {
                     
                     <div class="footer-section">
                         <p class="footer-text footer-copyright">
-                            &copy; 2024 Campus Life App.<br>
-                            IST4035 Advanced Web Design Project.
+                            &copy; 2025 Campus Life App.<br>
+                            IST4035VA - Advanced Web Design Project.
                         </p>
                     </div>
                 </div>
