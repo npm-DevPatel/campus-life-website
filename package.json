@@ -1,0 +1,27 @@
+{
+  "name": "campus-life-app",
+  "version": "1.0.0",
+  "description": "**IST4035 – Advanced Web Design**  \r **Team Project – Full-Stack Campus Management System**",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/npm-DevPatel/campus-life-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/npm-DevPatel/campus-life-website/issues"
+  },
+  "homepage": "https://github.com/npm-DevPatel/campus-life-website#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}
